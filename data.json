@@ -1,0 +1,34 @@
+{
+	"description": "The Base Wairere Drive, Northgate, Hamilton, New Zealand",
+	"matched_substrings": [{
+		"length": 3,
+		"offset": 0
+	}],
+	"place_id": "ChIJNfKzCv0ibW0R_oCv9CfjgbQ",
+	"reference": "ChIJNfKzCv0ibW0R_oCv9CfjgbQ",
+	"structured_formatting": {
+		"main_text": "The Base",
+		"main_text_matched_substrings": [{
+			"length": 8,
+			"offset": 0
+		}],
+		"secondary_text": "Wairere Drive, Northgate, Hamilton, New Zealand"
+	},
+	"terms": [{
+		"offset": 0,
+		"value": "The Base"
+	}, {
+		"offset": 9,
+		"value": "Wairere Drive"
+	}, {
+		"offset": 24,
+		"value": "Northgate"
+	}, {
+		"offset": 35,
+		"value": "Hamilton"
+	}, {
+		"offset": 45,
+		"value": "New Zealand"
+	}],
+	"types": ["shopping_mall", "point_of_interest", "establishment"]
+}

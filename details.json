@@ -1,0 +1,228 @@
+{
+	"address_components": [{
+		"long_name": "Wairere Drive",
+		"short_name": "Wairere Dr",
+		"types": ["route"]
+	}, {
+		"long_name": "Northgate",
+		"short_name": "Northgate",
+		"types": ["sublocality_level_1", "sublocality", "political"]
+	}, {
+		"long_name": "Hamilton",
+		"short_name": "Hamilton",
+		"types": ["locality", "political"]
+	}, {
+		"long_name": "Waikato",
+		"short_name": "Waikato",
+		"types": ["administrative_area_level_1", "political"]
+	}, {
+		"long_name": "New Zealand",
+		"short_name": "NZ",
+		"types": ["country", "political"]
+	}, {
+		"long_name": "3200",
+		"short_name": "3200",
+		"types": ["postal_code"]
+	}],
+	"adr_address": "Te Rapa Road &amp;, <span class=\"street-address\">Wairere Drive</span>, <span class=\"extended-address\">Northgate</span>, <span class=\"locality\">Hamilton</span> <span class=\"postal-code\">3200</span>, <span class=\"country-name\">New Zealand</span>",
+	"business_status": "OPERATIONAL",
+	"formatted_address": "Te Rapa Road &, Wairere Drive, Northgate, Hamilton 3200, New Zealand",
+	"formatted_phone_number": "07-849 0770",
+	"geometry": {
+		"location": {
+			"lat": -37.7491174,
+			"lng": 175.233495
+		},
+		"viewport": {
+			"northeast": {
+				"lat": -37.7435833,
+				"lng": 175.23458115
+			},
+			"southwest": {
+				"lat": -37.7509621,
+				"lng": 175.23023655
+			}
+		}
+	},
+	"icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/shopping-71.png",
+	"international_phone_number": "+64 7-849 0770",
+	"name": "The Base",
+	"opening_hours": {
+		"open_now": false,
+		"periods": [{
+			"close": {
+				"day": 0,
+				"time": "1800"
+			},
+			"open": {
+				"day": 0,
+				"time": "0900"
+			}
+		}, {
+			"close": {
+				"day": 1,
+				"time": "1800"
+			},
+			"open": {
+				"day": 1,
+				"time": "0900"
+			}
+		}, {
+			"close": {
+				"day": 2,
+				"time": "1800"
+			},
+			"open": {
+				"day": 2,
+				"time": "0900"
+			}
+		}, {
+			"close": {
+				"day": 3,
+				"time": "1800"
+			},
+			"open": {
+				"day": 3,
+				"time": "0900"
+			}
+		}, {
+			"close": {
+				"day": 4,
+				"time": "2100"
+			},
+			"open": {
+				"day": 4,
+				"time": "0900"
+			}
+		}, {
+			"close": {
+				"day": 5,
+				"time": "2100"
+			},
+			"open": {
+				"day": 5,
+				"time": "0900"
+			}
+		}, {
+			"close": {
+				"day": 6,
+				"time": "1800"
+			},
+			"open": {
+				"day": 6,
+				"time": "0900"
+			}
+		}],
+		"weekday_text": ["Monday: 9:00 AM – 6:00 PM", "Tuesday: 9:00 AM – 6:00 PM", "Wednesday: 9:00 AM – 6:00 PM", "Thursday: 9:00 AM – 9:00 PM", "Friday: 9:00 AM – 9:00 PM", "Saturday: 9:00 AM – 6:00 PM", "Sunday: 9:00 AM – 6:00 PM"]
+	},
+	"photos": [{
+		"height": 612,
+		"html_attributions": ["<a href=\"https://maps.google.com/maps/contrib/114937238935214805941\">Max X</a>"],
+		"photo_reference": "ATtYBwK1M0Vp5vP_avveQSo4AHotnMzhzWygewiGayAa-_aO096a6WSfRh6n_f9KP9bHW--T6TSIgaC2hPDB16aREy9Am9RxVUm0G6tTc1OqzYLIl0pdpgRx_ZJZqRaIr-28ONSwZ3RxSqo4zM8ndIvGIGzNsu2wB9qecwxfwwJkI_aAHhDF",
+		"width": 816
+	}, {
+		"height": 3024,
+		"html_attributions": ["<a href=\"https://maps.google.com/maps/contrib/115803233005166532806\">Dupinder Gill</a>"],
+		"photo_reference": "ATtYBwKJ_P8j2ME9Q2Qb2CZLrU7CnefaOzWJw_6G23clYrHva3wFCfMgnnzJyUbBwzTmFVZMBC5bFbuARqsr5ovBEkbpr0LUwV0FNQAGJlpX92CIuMZr6S343Umx8d2vBVLSP6sSPOUYwycL04h1KscXM9DYhshQzNbeipKgqJlV61-zEmGF",
+		"width": 4032
+	}, {
+		"height": 1840,
+		"html_attributions": ["<a href=\"https://maps.google.com/maps/contrib/116728279949540333661\">Wayne Barnes</a>"],
+		"photo_reference": "ATtYBwKJue8jVbMAudonNA9zE7SufR6eXY8HdB2NfmRffiSPpLj_xB84c4QasyfsjLwTVzTt6pWUHvUZ39vNBT_NTlHxjf-woaDBWAIDnjCi2QaAdZYng0aJHVwIyBAXPlHVbHhlBSAkXISLalW5lA3JDwrpp4bbOul1LHwSJNfgWHmyf3fH",
+		"width": 3264
+	}, {
+		"height": 3024,
+		"html_attributions": ["<a href=\"https://maps.google.com/maps/contrib/112266630177884746490\">vimal kumar</a>"],
+		"photo_reference": "ATtYBwIfX-2zl_vK3RmACPiqZt8JZDLLvoCn29rspIQNKowAX71Cf1KpS7TTudJBvB7spSz-WRlwF2QEj2wHphGQL8_vk_6zUH4Nn7XPVQVlHKoq8f_TRvC5S3J5VoeEAAPAmjlSPyRWAnEWcc09QWptrO5XeBpcDCfod-ZsNKocSUZQ2hL_",
+		"width": 4032
+	}, {
+		"height": 3024,
+		"html_attributions": ["<a href=\"https://maps.google.com/maps/contrib/105124981746708452141\">mcenergy New zealand</a>"],
+		"photo_reference": "ATtYBwJGgq9BUPd2nsz-a0rfUh52yCZjhJtG04TdUOFpeLuDnQyiriylT3BW-4uX6GckRYkS2oxcAqtmPZuWDpCQdoIYo8Va299U2WVZ5L-t_kCTD5rwMpuM4xGfz5oz6RyJk3JEatirRc1pPb1KrZCLZsZganXlYOjJiDuAZ0UbViD_BLK6",
+		"width": 3024
+	}, {
+		"height": 3024,
+		"html_attributions": ["<a href=\"https://maps.google.com/maps/contrib/118133029204779775344\">Dave</a>"],
+		"photo_reference": "ATtYBwJKUhm8oCXlSpaocAXz8z-mhSHXS0IhDXIFXIHwb4uhwsgzArNqP4tgL17SPYLRUAL9ryZM3-AldS6wplcnVpiCzWyWPbRjt2QBrxRGk4i4G_JIimMAOz6WkuqJDyYV7_eTzv0cZpAQpOW_y23Ko4_vK1ryiHje-DvvvlfosnB679Iw",
+		"width": 4032
+	}, {
+		"height": 1960,
+		"html_attributions": ["<a href=\"https://maps.google.com/maps/contrib/114113403504344248554\">Varinder Singh</a>"],
+		"photo_reference": "ATtYBwJjP_JHERJhX4zIJz9m622lv2xRD-6e0Zomv11ZDHNEIcUd3ZFKAocHiucc3gY0Nk7OJU9AdYjolsDaqnjd_tpBlWZuJUueQIKXm3alcV5klp4Y6UG2xEPzm93ao75FOM6VGTp42NkBynOL6kxzN_P6ypupK1R5zR25koKc4nD3_TY",
+		"width": 4032
+	}, {
+		"height": 1840,
+		"html_attributions": ["<a href=\"https://maps.google.com/maps/contrib/116728279949540333661\">Wayne Barnes</a>"],
+		"photo_reference": "ATtYBwIMB1rDysTOe_fT43H11RCFFv5okO-EIcIioGp3UInIHhG9Kn3Zy1WRtSoKFja-33Q1vUtkBUyW0_obeJu1MydUCvSf_G6w7KOfiznoWdO0BFCbIczceAenXCUdO156rJTGSYFNwBs-Bh829-DQF6hKOw25dNyL9f0ICXLVv_ELrFYL",
+		"width": 3264
+	}, {
+		"height": 3006,
+		"html_attributions": ["<a href=\"https://maps.google.com/maps/contrib/100234922464838654841\">Nayan Swaminarayan</a>"],
+		"photo_reference": "ATtYBwKvrKdoEnA1k6I8uHn8KdcAWKIRfWCvGqpw03tmQ-kgfw9JVw-_lA9wxRFImANNCjiB1Pr0q4wT9tsWEM0lsEcgYQ0YOTr2fB-B8fI_NlIfdxky33OGiY5uxtoV_Y1Kmsk8cXD5G7hK5GRi4p8YQX9APADRlKum1J6LZQogP3CbgnP4",
+		"width": 5344
+	}, {
+		"height": 4032,
+		"html_attributions": ["<a href=\"https://maps.google.com/maps/contrib/105788718485468073592\">Jagath Nugadeniya</a>"],
+		"photo_reference": "ATtYBwIJhnd35xgqudkR8FEB9JZaBMTfd2CiIWFy7pgOC-z-sMSN2D57DW6zn7SWWmo5S2iD6aQaULAdYz1mqXfH8y9Q3381mzWPM1a584gjh2hq5zJCS6n2AoJ37p2dAXFgcVUY0Jpu5F_yeuu8qbcMtIl0GYg_0lLKrS4Nws75BHZRXZnw",
+		"width": 1960
+	}],
+	"place_id": "ChIJNfKzCv0ibW0R_oCv9CfjgbQ",
+	"plus_code": {
+		"compound_code": "762M+99 Hamilton, Waikato, New Zealand",
+		"global_code": "4VJQ762M+99"
+	},
+	"rating": 4.3,
+	"reference": "ChIJNfKzCv0ibW0R_oCv9CfjgbQ",
+	"reviews": [{
+		"author_name": "leanne bath",
+		"author_url": "https://www.google.com/maps/contrib/110790731469740296651/reviews",
+		"language": "en",
+		"profile_photo_url": "https://lh3.googleusercontent.com/a-/AOh14GjlwBnKIgt7dzgU2E1O_o15cn_kSkAnEF3SI_51UA=s128-c0x00000000-cc-rp-mo-ba2",
+		"rating": 5,
+		"relative_time_description": "3 months ago",
+		"text": "Grt place, has everything you need and more",
+		"time": 1600315201
+	}, {
+		"author_name": "Matthew Evis",
+		"author_url": "https://www.google.com/maps/contrib/102697497319892355378/reviews",
+		"language": "en",
+		"profile_photo_url": "https://lh6.googleusercontent.com/-Q2nd1oIGRlg/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuckLidLhsr1KExNHjjtMiAetrTIZyA/s128-c0x00000000-cc-rp-mo-ba2/photo.jpg",
+		"rating": 4,
+		"relative_time_description": "3 months ago",
+		"text": "Almost everything you need under one roof",
+		"time": 1600470349
+	}, {
+		"author_name": "Paul Lombard",
+		"author_url": "https://www.google.com/maps/contrib/103043833542663795447/reviews",
+		"language": "en",
+		"profile_photo_url": "https://lh3.googleusercontent.com/a-/AOh14GhxrQ2WPLhYlaIZms1Ccm21Ae41jaij_0lRL_9Utw=s128-c0x00000000-cc-rp-mo-ba3",
+		"rating": 4,
+		"relative_time_description": "4 months ago",
+		"text": "Busy as but it has most shops we needed. Kmart should be here too not across the road.",
+		"time": 1598768414
+	}, {
+		"author_name": "Adrian Cooper",
+		"author_url": "https://www.google.com/maps/contrib/107957111392313748600/reviews",
+		"language": "en",
+		"profile_photo_url": "https://lh3.googleusercontent.com/a-/AOh14Gj-sIS5kttCPcG-iG3tDrf4xTZpyW-F78KI1cIW=s128-c0x00000000-cc-rp-mo-ba4",
+		"rating": 5,
+		"relative_time_description": "2 months ago",
+		"text": "It's HUGE to put it bluntly.  Half of the shopping complex is inside in the main hall, the rest of the bigger stores are in a ring outside on the perimeter. Parking is great, either inside or out. Every label you could think of is here I think.Chemist Warehouse is now situated there.",
+		"time": 1604386316
+	}, {
+		"author_name": "Matthew Holloway",
+		"author_url": "https://www.google.com/maps/contrib/108049350391778031876/reviews",
+		"language": "en",
+		"profile_photo_url": "https://lh3.googleusercontent.com/-i8jBnn7ywTA/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucl67RRaerSteqRXARzOr_T4mBjBvw/s128-c0x00000000-cc-rp-mo-ba4/photo.jpg",
+		"rating": 4,
+		"relative_time_description": "4 months ago",
+		"text": "Parking was absolute chaos, otherwise great.",
+		"time": 1599080902
+	}],
+	"types": ["shopping_mall", "point_of_interest", "establishment"],
+	"url": "https://maps.google.com/?cid=13006926959571075326",
+	"user_ratings_total": 6726,
+	"utc_offset": 780,
+	"vicinity": "Te Rapa Road &, Wairere Drive, Hamilton",
+	"website": "http://www.the-base.co.nz/"
+}

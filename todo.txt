@@ -1,0 +1,32 @@
+upload photos to reviews
+redo redux for auth and users to alow photos
+make photos part of review for both new and existing locations
+make select avatar functionality
+
+create/style logged in change password page
+Create entire 'More' section (About us, Contact us, Access from home (?), Ts&Cs, Privacy Policy, Version number + buildnumber)
+
+load onto phone and test current location
+port over to ios
+
+? [near me section]
+? accessnow name
+? accessnow colour
+? accessnow
+? accessnow nz domain
+? accessnow email
+
+Auth Paths
+
+//Go to profile tab and login
+//Go to profile tab and login with facebook
+//Go to profile tab and register
+//Go to profile tab and register with facebook
+//Attempt to add location without auth and login
+//Attempt to add location without auth and login with facebook
+//Attempt to add location without auth and register
+//Attempt to add location without auth and register with facebook
+//Attempt to add new review to old location without auth and login
+//Attempt to add new review to old location without auth and login with facebook
+//Attempt to add new review to old location without auth and register
+//Attempt to add new review to old location without auth and register with facebook
