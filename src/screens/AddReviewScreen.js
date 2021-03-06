@@ -361,6 +361,7 @@ const styles = StyleSheet.create({
     borderColor: '#999',
     borderWidth: 1,
     borderRadius: 5,
+    marginBottom: 15,
   },
   submitButton: {
     marginBottom: 25,
@@ -376,7 +377,7 @@ const styles = StyleSheet.create({
   },
   features: {
     marginTop: 15,
-    marginBottom: 25,
+    marginBottom: 15,
 
     alignSelf:"flex-start",
     backgroundColor: '#ecf0f1',

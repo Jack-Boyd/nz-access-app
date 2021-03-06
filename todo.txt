@@ -12,9 +12,9 @@ port over to ios
 ? [near me section]
 ? accessnow name
 ? accessnow colour
-? accessnow
 ? accessnow nz domain
 ? accessnow email
+? terms, privacy policy, settings page content
 
 Auth Paths
 

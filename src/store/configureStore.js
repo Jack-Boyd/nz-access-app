@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import authReducer from '../reducers/auth';
 import categoriesReducer from '../reducers/categories';
+import currentLocationReducer from '../reducers/currentLocation';
 import featuresReducer from '../reducers/features';
 import filtersReducer from '../reducers/filters';
 import locationsReducer from '../reducers/locations';
@@ -14,6 +15,7 @@ export default () => {
     combineReducers({
       auth: authReducer,
       categories: categoriesReducer,
+      currentLocation: currentLocationReducer,
       features: featuresReducer,
       filters: filtersReducer,
       locations: locationsReducer,

@@ -25,7 +25,7 @@ DerivedData
 #
 build/
 google-services.json
-java_pid5648.hprof
+*.hprof
 .idea
 .gradle
 local.properties

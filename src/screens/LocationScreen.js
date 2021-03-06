@@ -29,7 +29,6 @@ class LocationScreen extends React.Component {
 
   render() {
     const {locationId, map} = this.props.route.params;
-    console.log(locationId);
     const location = this.getLocation(locationId);
     const category = this.getCategory(location.category);
     let featuresString = null;
@@ -74,7 +73,7 @@ class LocationScreen extends React.Component {
               <Text style={styles.listSectionName}>{location.address}</Text>
             </View>
             {
-              location.phone != null && (
+              location.phone != '' && (
                 <View style={styles.listSection}>
                   <MaterialCommunityIcons
                     name="phone"
@@ -87,7 +86,7 @@ class LocationScreen extends React.Component {
               )
             }
             {
-              location.website != null && (
+              location.website != '' && (
                 <View style={styles.listSection}>
                   <MaterialCommunityIcons
                     name="web"

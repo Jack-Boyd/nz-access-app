@@ -140,6 +140,8 @@ const styles = StyleSheet.create({
   login: {
     color: AppStyles.color.main,
     fontWeight: 'bold',
+    marginTop: 12,
+    fontSize: 15,
   },
   submitButton: {
     backgroundColor: AppStyles.color.main,

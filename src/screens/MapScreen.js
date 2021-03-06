@@ -18,6 +18,7 @@ import {connect} from 'react-redux';
 
 import {AppStyles} from '../AppStyles';
 import getVisibleLocations from '../selectors/locations';
+import {setCurentLocation} from '../actions/currentLocation';
 
 const requestCameraPermission = async () => {
   const granted = await PermissionsAndroid.request(
@@ -43,8 +44,10 @@ class MapScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentLocation: {},
+      currentPosition: {},
+      initialLocation: {},
       loading: true,
+      savedLocation: {},
       searchResults: [],
     };
   }
@@ -54,9 +57,15 @@ class MapScreen extends React.Component {
     this.setState({loading: true}, () => {
       Geolocation.getCurrentPosition((position) => {
         this.setState({
-          currentLocation: position,
+          currentPosition: position,
           loading: false,
         });
+        this.props.dispatch(setCurentLocation({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
+        }));
       },(error) => {
         this.setState({ loading: false });
       },{ enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 });
@@ -88,21 +97,12 @@ class MapScreen extends React.Component {
   }
 
   render() {
-    const {currentLocation, loading, searchResults} = this.state;
-    const locationData = currentLocation.coords;
+    const {currentPosition, loading, searchResults} = this.state;
+    const {currentLocation} = this.props;
+    const locationData = currentPosition.coords;
     const headingTextLimit = 38;
     const subHeadingTextLimit = 42;
     let region = {};
-    if (!loading) {
-      region = {
-        //latitude: locationData.latitude,
-        //longitude: locationData.longitude,
-        latitude: -36.8687861,
-        longitude: 174.7684134,
-        latitudeDelta: 0.0482,
-        longitudeDelta: 0.0481,
-      };
-    }
 
     return (
       <View style={styles.container}>
@@ -144,6 +144,7 @@ class MapScreen extends React.Component {
                       const category = this.getCategory(result.category);
                       return (
                         <TouchableOpacity key={result.reference} style={styles.searchSectionItem} onPress={() => {
+                          this.props.dispatch(setCurentLocation(region));
                           this.props.navigation.navigate('MapLocationScreen', {
                             locationId: result.id,
                           })
@@ -193,6 +194,7 @@ class MapScreen extends React.Component {
                     size={22}
                     style={styles.filterButton}
                     onPress={() => {
+                      this.props.dispatch(setCurentLocation(region));
                       this.props.navigation.navigate('MapFilterScreen')
                     }}
                   />
@@ -203,58 +205,68 @@ class MapScreen extends React.Component {
                     style={styles.goToButton}
                     onPress={() => {
                       this.map.animateToRegion({
-                        latitude: -36.8687861,
-                        longitude: 174.7684134,
-                        latitudeDelta: 0.0322,
-                        longitudeDelta: 0.0321,
+                        latitude: locationData.latitude,
+                        longitude: locationData.longitude,
+                        latitudeDelta: 0.01,
+                        longitudeDelta: 0.01,
                       })
                     }}
                   />
-                  <MapView
-                    ref={(map) => this.map = map}
-                    style={styles.map}
-                    region={region}
-                    provider={"google"}>
-                    {
-                      this.props.locations.map((pin) => {
-                        const coordinate = {
-                          latitude: parseFloat(pin.latitude),
-                          longitude: parseFloat(pin.longitude),
-                        };
-                        const category = this.getCategory(pin.category);
-                        return (
-                          <Marker
-                            key={pin.reference}
-                            coordinate={coordinate}
-                            pinColor={'green'}
-                            title={pin.name}>
-                            <View style={styles.teardrop}>
-                              <MaterialCommunityIcons
-                                name={category.icon}
-                                color="#ffffff"
-                                size={18}
-                                style={{
-                                  backgroundColor: category.colour,
-                                  borderRadius: 13,
-                                  height: 24,
-                                  justifyContent: 'center',
-                                  paddingLeft: 3,paddingTop: 3,
-                                  width: 24,
-                                }}
-                              />
-                            </View>
-                            <Callout tooltip onPress={() => {
-                              this.props.navigation.navigate('MapLocationScreen', {
-                                locationId: pin.id,
-                                map: true,
-                              })
-                            }}>
-                            </Callout>
-                          </Marker>
-                        );
-                      })
-                    }
-                  </MapView>
+                  {
+                    !loading &&
+                    <MapView
+                      ref={(map) => this.map = map}
+                      style={styles.map}
+                      showsUserLocation={true}
+                      region={currentLocation}
+                      onRegionChange={(completeRegion) => {
+                        region = completeRegion;
+                        //
+                      }}
+                      provider={"google"}>
+                      {
+                        this.props.locations.map((pin) => {
+                          const coordinate = {
+                            latitude: parseFloat(pin.latitude),
+                            longitude: parseFloat(pin.longitude),
+                          };
+                          const category = this.getCategory(pin.category);
+                          return (
+                            <Marker
+                              key={pin.reference}
+                              coordinate={coordinate}
+                              pinColor={'green'}
+                              title={pin.name}>
+                              <View style={styles.teardrop}>
+                                <MaterialCommunityIcons
+                                  name={category.icon}
+                                  color="#ffffff"
+                                  size={18}
+                                  style={{
+                                    backgroundColor: category.colour,
+                                    borderRadius: 13,
+                                    height: 24,
+                                    justifyContent: 'center',
+                                    paddingLeft: 3,paddingTop: 3,
+                                    width: 24,
+                                  }}
+                                />
+                              </View>
+                              <Callout tooltip onPress={() => {
+                                this.props.dispatch(setCurentLocation(region));
+                                this.props.navigation.navigate('MapLocationScreen', {
+                                  locationId: pin.id,
+                                  map: true,
+                                })
+                              }}>
+                              </Callout>
+                            </Marker>
+                          );
+                        })
+                      }
+                    </MapView>
+                  }
+
                 </View>
 
               }
@@ -391,6 +403,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   categories: state.categories,
+  currentLocation: state.currentLocation,
   locations: getVisibleLocations(state.locations, state.filters),
 });
 

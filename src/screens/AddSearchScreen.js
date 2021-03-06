@@ -91,9 +91,14 @@ class AddSearchScreen extends React.Component {
                     title
                   }</Text>
                   <Text style={styles.searchSectionSubHeading}>{
-                    ((address).length > subHeadingTextLimit) ?
-                    (((address).substring(0, subHeadingTextLimit)) + "...") :
-                    address
+                    (address) ?
+                      (
+                        ((address).length > subHeadingTextLimit) ?
+                          (
+                            ((address).substring(0, subHeadingTextLimit)) + "..."
+                          ) :
+                          address
+                      ) : ''
                   }</Text>
                 </View>
                 <MaterialCommunityIcons

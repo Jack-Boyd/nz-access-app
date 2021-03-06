@@ -249,16 +249,18 @@ const styles = StyleSheet.create({
   login: {
     color: AppStyles.color.main,
     fontWeight: 'bold',
+    marginTop: 12,
+    fontSize: 15,
   },
   submitButton: {
     backgroundColor: AppStyles.color.main,
-    marginTop: 10,
+    marginTop: 5,
   },
   submitButtonFacebook: {
     backgroundColor: 'white',
     borderWidth: 1,
     borderColor: '#3b5998',
-    marginTop: 10,
+    marginTop: 12,
     textAlign: 'center',
     flex: 1,
     flexDirection: 'row',

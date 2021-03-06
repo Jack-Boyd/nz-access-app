@@ -51,11 +51,9 @@ class ProfileScreen extends React.Component {
     this.props.locations.forEach(location => {
       location.reviews.forEach(review => {
         if (review.user.id == user.id) {
-          console.log(location.reviews);
           let rvw = review
           rvw.user.name = username;
           location.reviews[location.reviews.indexOf(review)] = rvw;
-          console.log(location.reviews);
           let reviews = location.reviews;
           this.props.dispatch(startAddReview(location.id, {reviews}))
         }

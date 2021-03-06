@@ -55,16 +55,17 @@ class ViewProfileScreen extends React.Component {
                     reviews.map((review, index) => {
 
                       let reviewFeaturesString = null;
-                      review.features.map((feature, index) => {
-                        const featureName = this.getFeature(feature);
-                        if (index == 0) {
-                          reviewFeaturesString = featureName.name + ', ';
-                        } else if (index == (review.features.length - 1)) {
-                          reviewFeaturesString += featureName.name;
-                        } else {
-                          reviewFeaturesString += featureName.name + ', ';
-                        }
-                      })
+                      (review.features) &&
+                        review.features.map((feature, index) => {
+                          const featureName = this.getFeature(feature);
+                          if (index == 0) {
+                            reviewFeaturesString = featureName.name + ', ';
+                          } else if (index == (review.features.length - 1)) {
+                            reviewFeaturesString += featureName.name;
+                          } else {
+                            reviewFeaturesString += featureName.name + ', ';
+                          }
+                        })
                       return (
                         <TouchableOpacity key={index} style={styles.review} onPress={() => {
                           this.props.navigation.navigate((map ? 'MapLocationScreen' : 'AddLocationScreen'), {
