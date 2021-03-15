@@ -9,7 +9,7 @@ const store = configureStore();
 
 LogBox.ignoreAllLogs();
 
-class AccessNowNZApp extends React.Component {
+class WheelEasyApp extends React.Component {
   render() {
     return (
       //add cloud messaging listening functionality
@@ -20,4 +20,4 @@ class AccessNowNZApp extends React.Component {
   }
 }
 
-export default AccessNowNZApp;
+export default WheelEasyApp;

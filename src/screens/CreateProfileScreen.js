@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
     borderBottomWidth: 1,
     flexDirection: 'row',
-    paddingBottom: 12,
+    paddingBottom: 16,
     paddingLeft: 10,
-    paddingTop: 12,
+    paddingTop: 16,
     width: Dimensions.get('screen').width,
   },
   profileText: {

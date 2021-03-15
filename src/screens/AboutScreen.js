@@ -4,7 +4,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {connect} from 'react-redux';
 import {AppStyles} from '../AppStyles';
 
-class ContactScreen extends React.Component {
+class AboutScreen extends React.Component {
   constructor(props){
     super();
   }
@@ -12,10 +12,10 @@ class ContactScreen extends React.Component {
   render() {
     return (
       <View>
-        <Text>Contact Screen</Text>
+        <Text>About Screen</Text>
       </View>
     );
   }
 }
 
-export default connect()(ContactScreen);
+export default connect()(AboutScreen);

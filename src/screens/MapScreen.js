@@ -61,8 +61,10 @@ class MapScreen extends React.Component {
           loading: false,
         });
         this.props.dispatch(setCurentLocation({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
+          // latitude: position.coords.latitude,
+          // longitude: position.coords.longitude,
+          latitude: -36.8687861,
+          longitude: 174.7684134,
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }));
@@ -72,7 +74,7 @@ class MapScreen extends React.Component {
     });
   }
 
-  onSearchChange (search) {
+  onSearchChange (search, region) {
     if (search.length >= 2) {
       const searchResults = [];
       this.props.locations.forEach((location) => {
@@ -80,10 +82,15 @@ class MapScreen extends React.Component {
           searchResults.push(location);
         }
       });
+
+
       this.setState({
-        searchResults
+        searchResults: searchResults,
       });
     } else {
+      if (search.length === 1) {
+        this.props.dispatch(setCurentLocation(region));
+      }
       this.setState({
         searchResults: []
       });
@@ -102,7 +109,8 @@ class MapScreen extends React.Component {
     const locationData = currentPosition.coords;
     const headingTextLimit = 38;
     const subHeadingTextLimit = 42;
-    let region = {};
+
+    let region = currentLocation;
 
     return (
       <View style={styles.container}>
@@ -129,7 +137,9 @@ class MapScreen extends React.Component {
                 />
                 <TextInput
                   style={{flex: 1}}
-                  onChangeText={(e) => this.onSearchChange(e)}
+                  onChangeText={(e) => {
+                    this.onSearchChange(e, region)
+                  }}
                   placeholder="Search for place"
                   underlineColorAndroid="transparent"
                 />
@@ -144,6 +154,7 @@ class MapScreen extends React.Component {
                       const category = this.getCategory(result.category);
                       return (
                         <TouchableOpacity key={result.reference} style={styles.searchSectionItem} onPress={() => {
+                          console.log('no ', region);
                           this.props.dispatch(setCurentLocation(region));
                           this.props.navigation.navigate('MapLocationScreen', {
                             locationId: result.id,
@@ -218,6 +229,7 @@ class MapScreen extends React.Component {
                       ref={(map) => this.map = map}
                       style={styles.map}
                       showsUserLocation={true}
+                      showsMyLocationButton={false}
                       region={currentLocation}
                       onRegionChange={(completeRegion) => {
                         region = completeRegion;

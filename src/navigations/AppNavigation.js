@@ -30,6 +30,8 @@ import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
 import ForgotPasswordSuccessScreen from '../screens/ForgotPasswordSuccessScreen';
 import ModalForgotPasswordScreen from '../screens/ModalForgotPasswordScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import AboutScreen from '../screens/AboutScreen';
+import ContactScreen from '../screens/ContactScreen';
 import {AppStyles} from '../AppStyles';
 import {navigationRef} from './NavigationReference';
 import { createModalNavigator } from 'react-navigation-native-modal';
@@ -264,6 +266,8 @@ const MoreStack = () => {
       animation="fade"
     >
       <Stack.Screen name="SettingsScreen" component={SettingsScreen}></Stack.Screen>
+      <Stack.Screen name="SettingsAboutScreen" component={AboutScreen}></Stack.Screen>
+      <Stack.Screen name="SettingsContactScreen" component={ContactScreen}></Stack.Screen>
     </Stack.Navigator>
   );
 }

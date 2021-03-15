@@ -60,16 +60,16 @@ class ProfileScreen extends React.Component {
             {
               !uploading &&
               <View>
-                <View style={styles.settingsView}>
-                  <TouchableOpacity onPressIn={() => {this.props.navigation.navigate('ProfileSettingsScreen')}}>
+                <TouchableOpacity style={{height:30,width:30,alignSelf: 'flex-end',}} onPressIn={() => {this.props.navigation.navigate('ProfileSettingsScreen')}}>
+                  <View style={styles.settingsView}>
                     <FontAwesome
                       name="cog"
                       color={AppStyles.color.main}
                       style={styles.settingsIcon}
                       size={30}
                     />
-                  </TouchableOpacity>
-                </View>
+                  </View>
+                </TouchableOpacity>
                 {
                   this.props.user ?
                     this.props.user.photo == null ? (

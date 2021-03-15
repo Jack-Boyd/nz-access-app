@@ -3,12 +3,12 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'AccessNowNZ' do
+target 'WheelEasy' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'AccessNowNZTests' do
+  target 'WheelEasyTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -23,10 +23,10 @@ target 'AccessNowNZ' do
   end
 end
 
-target 'AccessNowNZ-tvOS' do
-  # Pods for AccessNowNZ-tvOS
+target 'WheelEasy-tvOS' do
+  # Pods for WheelEasy-tvOS
 
-  target 'AccessNowNZ-tvOSTests' do
+  target 'WheelEasy-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

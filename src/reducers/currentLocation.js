@@ -9,7 +9,6 @@ const currentLocationReducerDefaultState = {
 export default (state = currentLocationReducerDefaultState, action) => {
   switch (action.type) {
     case 'SET_CURRENT_LOCATION':
-      'Region: ', action);
       return action.region;
     default:
       return state;
