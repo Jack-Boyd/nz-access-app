@@ -2,6 +2,10 @@ const userReducerDefaultState = null;
 
 export default (state = userReducerDefaultState, action) => {
   switch (action.type) {
+    case 'ADD_USER_PHOTO':
+      let userToUpdate = state;
+      userToUpdate.photo = action.updates.photo;
+      return userToUpdate;
     case 'EDIT_USER':
       let usr = state;
       usr.username = action.updates.username;

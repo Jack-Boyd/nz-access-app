@@ -2,47 +2,90 @@ import React from 'react';
 import { Dimensions } from 'react-native';
 import {Text, View, StyleSheet, ScrollView, Image, TextInput, Button, ActivityIndicator} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler'
+
 import * as ImagePicker from 'react-native-image-picker';
+import storage from '@react-native-firebase/storage';
+
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {connect} from 'react-redux';
 
+import {startAddUserPhoto, startSetUser} from '../actions/user';
 import {AppStyles} from '../AppStyles';
 
 class ProfileScreen extends React.Component {
   constructor(props){
     super();
     this.state = {
+      imagePath: '',
+      status: '',
       uploading: false,
     }
   }
 
-  onUploadAvatar() {
-    const options = {
-      mediaType: 'photo',
-      includeBase64: false,
-      maxHeight: 300,
-      maxWidth: 300,
+  componentDidMount() {
+    if (this.props.user.photo){
+      let imageRef = storage().ref(this.props.user.photo);
+      imageRef.getDownloadURL().then((url) => {
+        this.setState({imagePath: url});
+      })
+    }
+  }
+
+  onUploadAvatar = () => {
+    var options = {
+      title: 'Select Image',
+      customButtons: [
+          { name: 'customOptionKey', title: 'Choose Photo from Custom Option' },
+      ],
+      storageOptions: {
+          skipBackup: true, // do not backup to iCloud
+          path: 'images', // store camera images under Pictures/images for android and Documents/images for iOS
+      },
     };
 
     ImagePicker.launchImageLibrary(options, (response) => {
       if (response.didCancel) {
-        console.log('User cancelled image picker');
+        console.log('User cancelled image picker', storage());
       } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
       } else {
-        const uri = response.uri;
-        const ext = uri.split('.').pop(); // Extract image extension
-
-        console.log(ext);
-
-        //firebase storage
+        // const uri = response.uri;
+        let path = response.uri;
+        let fileName = this.getFileName(response.fileName, path);
+        this.uploadImageToStorage(path, fileName);
       }
     });
   }
 
+  getFileName(name, path) {
+    if (name != null) { return name; }
+
+    if (Platform.OS === "ios") {
+        path = "~" + path.substring(path.indexOf("/Documents"));
+    }
+    return path.split("/").pop();
+  }
+
+  uploadImageToStorage(path, name) {
+    this.setState({ uploading: true });
+    let reference = storage().ref(`/users/${this.props.user.id}/${name}`);
+    let task = reference.putFile(`${path}`);
+    task.then((snapshot) => {
+        console.log('Image uploaded to the bucket! ', snapshot);
+        this.props.dispatch(startAddUserPhoto(this.props.user.id, {photo: `/users/${this.props.user.id}/${name}`}))
+        this.props.dispatch(startSetUser(this.props.user.id));
+        reference.getDownloadURL().then((url) => {
+          this.setState({ imagePath: url, status: 'Image uploaded successfully', uploading: false });
+        })
+    }).catch((e) => {
+        console.log('uploading image error => ', e);
+        this.setState({ uploading: false, status: 'Something went wrong' });
+    });
+  }
+
   render() {
-    const {uploading} = this.state;
+    const {uploading, imagePath} = this.state;
     return (
 
       <View style={styles.container}>
@@ -83,7 +126,7 @@ class ProfileScreen extends React.Component {
                           />
                           <View style={styles.userUploadPhotoWidth}>
                             <View style={styles.userUploadPhotoView}>
-                              <TouchableOpacity onPressIn={() => this.onUploadAvatar()}>
+                              <TouchableOpacity onPressIn={async () => this.onUploadAvatar()}>
                                 <MaterialCommunityIcons
                                   name="camera"
                                   color={"white"}
@@ -96,8 +139,15 @@ class ProfileScreen extends React.Component {
                         </View>
 
                       </View>
-                    ) : (<View></View>)
-                  : (<View></View>)
+                    ) : (
+                      <View style={styles.userSection}>
+                        {
+                          imagePath !== '' &&
+                          <Image source={{uri: imagePath}} style={styles.imageStyle}/>
+                        }
+                      </View>
+                    )
+                  : (<View><Text>Error: No user found</Text></View>)
                 }
                 {
                   this.props.user ?
@@ -185,6 +235,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  imageStyle: {
+    alignItems: 'center',
+    height: 125,
+    marginTop: 5,
+    marginLeft: 5,
+    marginBottom: 5,
+    marginRight: 6,
+    padding: 10,
+    resizeMode: 'stretch',
+    width: 125,
+  },
   activityIndicator: {
     flex: 1,
     justifyContent: 'center',
@@ -198,3 +259,15 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(ProfileScreen);
+
+
+  // async onUploadAvatar() {
+  //   const options = {
+  //     mediaType: 'photo',
+  //     includeBase64: false,
+  //     maxHeight: 300,
+  //     maxWidth: 300,
+  //   };
+
+
+  // }

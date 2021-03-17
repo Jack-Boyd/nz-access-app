@@ -26,6 +26,21 @@ export const startAddUser = (userData = {} ) => {
   };
 };
 
+//ADD_USER_PHOTO
+export const addUserPhoto = (userId, updates) => ({
+  type: 'ADD_USER_PHOTO',
+  userId,
+  updates,
+});
+
+export const startAddUserPhoto = (userId, updates = {photo: photo}) => {
+  return (dispatch) => {
+    return db.ref(`/users/${userId}`).update(updates).then(() => {
+        dispatch(addUserPhoto(userId, updates));
+    });
+  };
+};
+
 //EDIT_USER
 export const editUser = (userId, updates) => ({
   type: 'EDIT_USER',
