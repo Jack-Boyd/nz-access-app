@@ -33,7 +33,6 @@ class MapFilterScreen extends React.Component {
     let iconRows = [];
     const itemsPerRow = 3;
     const noOfRows = Math.ceil(categories.length / itemsPerRow);
-
     for(let i=0; i<noOfRows; i++) {
       const row = categories.slice((i*itemsPerRow), ((i+1)*itemsPerRow));
       iconRows.push(row);
@@ -62,10 +61,12 @@ class MapFilterScreen extends React.Component {
                                   color={(selected ? "#ffffff" : category.colour)}
                                   size={26}
                                   style={{
-                                    backgroundColor: selected ? category.colour : "#ffffff",
+                                    backgroundColor: selected ? category.colour : ("#ffffff"),
                                     borderColor: category.colour,
                                     borderWidth: 2,
                                     borderRadius: 26,
+                                    overflow: 'hidden',
+
                                     height: 52,width: 52,
                                     marginTop: 5,marginLeft: 32, marginRight: 32,
                                     paddingLeft: 13, paddingTop: 12,
@@ -147,6 +148,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     padding: 8,
+    overflow: 'hidden',
     marginBottom: 10,
     marginRight: 10,
     textAlign: 'center',
@@ -158,6 +160,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     color: 'white',
     fontWeight: 'bold',
+    overflow: 'hidden',
     padding: 8,
     marginBottom: 10,
     marginRight: 10,

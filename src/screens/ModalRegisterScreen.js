@@ -266,7 +266,7 @@ class ModalRegisterScreen extends React.Component {
               review: toAddReview,
               user: {
                 id : user.user.uid,
-                name: user.user.displayName,
+                name: ctx.state.username,
               }
             });
             const features = toAddLocation.features;
@@ -287,7 +287,7 @@ class ModalRegisterScreen extends React.Component {
               review: toAddReview,
               user: {
                 id : user.user.uid,
-                name: user.user.displayName,
+                name: ctx.state.username,
               }
             }];
             this.props.dispatch(startAddLocation(toAddLocation));

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, ScrollView, TextInput, Animated, Platform, TouchableOpacity } from 'react-native';
+import {Text, KeyboardAvoidingView,TouchableWithoutFeedback, View, StyleSheet, ScrollView, TextInput, Animated, Platform, TouchableOpacity, Keyboard } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as ImagePicker from 'react-native-image-picker';
 import ImageResizer from 'react-native-image-resizer';
@@ -215,11 +215,16 @@ class AddReviewScreen extends React.Component {
         iconRows.push(row);
       }
     }
+    console.log('huh?', this.state)
 
     return (
-      <View style={styles.container}>
+      // <KeyboardAvoidingView
+      //   behaviour={Platform.OS === 'ios' ? "padding" : "height"}
+      //   style={Platform.OS === 'ios' && {flex: 1}}>
+        <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
           <View style={styles.screen}>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.reviewForm}>
               <View style={styles.locationText}>
                 <Text style={styles.locationName}>{newLocation ? locationId.structured_formatting.main_text : locationId.name}</Text>
@@ -251,6 +256,7 @@ class AddReviewScreen extends React.Component {
                                         size={26}
                                         style={{
                                           backgroundColor: backgroundColorConfig,
+                                          overflow: 'hidden',
                                           borderColor: category.colour,
                                           borderWidth: 2,
                                           borderRadius: 26,
@@ -290,11 +296,11 @@ class AddReviewScreen extends React.Component {
                   })
                 }
               </View>
-              <View>
+              {/* <View>
                 <TouchableOpacity style={styles.submitButton}>
                   <Text style={styles.submitButtonText}>Upload Photos</Text>
                 </TouchableOpacity>
-              </View>
+              </View> */}
               <View>
                 <View>
                   <Text>Please write a review.</Text>
@@ -309,9 +315,11 @@ class AddReviewScreen extends React.Component {
                 <Text style={styles.submitButtonText}>Done</Text>
               </TouchableOpacity>
             </View>
+            </TouchableWithoutFeedback>
           </View>
         </ScrollView>
-      </View>
+        </View>
+      // </KeyboardAvoidingView>
     );
   }
 }
@@ -361,6 +369,8 @@ const styles = StyleSheet.create({
     borderColor: '#999',
     borderWidth: 1,
     borderRadius: 5,
+    overflow: 'hidden',
+
     marginBottom: 15,
   },
   submitButton: {
@@ -390,6 +400,7 @@ const styles = StyleSheet.create({
   },
   feature: {
     borderRadius: 18,
+    overflow: 'hidden',
     borderWidth: 1,
     fontWeight: 'bold',
     color: 'black',
@@ -402,6 +413,8 @@ const styles = StyleSheet.create({
     backgroundColor: AppStyles.color.main,
     borderColor: AppStyles.color.main,
     borderRadius: 18,
+    overflow: 'hidden',
+
     borderWidth: 1,
     color: 'white',
     fontWeight: 'bold',

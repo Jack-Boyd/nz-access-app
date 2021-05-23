@@ -32,16 +32,18 @@ class LocationScreen extends React.Component {
     const location = this.getLocation(locationId);
     const category = this.getCategory(location.category);
     let featuresString = null;
-    location.features.map((feature, index) => {
-      const featureName = this.getFeature(feature);
-      if (index == 0) {
-        featuresString = featureName.name + ', ';
-      } else if (index == (location.features.length - 1)) {
-        featuresString += featureName.name;
-      } else {
-        featuresString += featureName.name + ', ';
-      }
-    })
+    if (location.features) {
+      location.features.map((feature, index) => {
+        const featureName = this.getFeature(feature);
+        if (index == 0) {
+          featuresString = featureName.name + ', ';
+        } else if (index == (location.features.length - 1)) {
+          featuresString += featureName.name;
+        } else {
+          featuresString += featureName.name + ', ';
+        }
+      })
+    }
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scrollView}>
@@ -56,6 +58,7 @@ class LocationScreen extends React.Component {
                   borderRadius: 19,
                   height: 37,
                   justifyContent: 'center',
+                  overflow: 'hidden',
                   paddingLeft: 5,
                   paddingTop: 5,
                   width: 37,
@@ -138,23 +141,20 @@ class LocationScreen extends React.Component {
                     location.reviews.map((review, index) => {
 
                       let reviewFeaturesString = null;
-                      review.features.map((feature, index) => {
-                        const featureName = this.getFeature(feature);
-                        if (index == 0) {
-                          reviewFeaturesString = featureName.name + ', ';
-                        } else if (index == (review.features.length - 1)) {
-                          reviewFeaturesString += featureName.name;
-                        } else {
-                          reviewFeaturesString += featureName.name + ', ';
-                        }
-                      })
+                      if (review.features){
+                        review.features.map((feature, index) => {
+                          const featureName = this.getFeature(feature);
+                          if (index == 0) {
+                            reviewFeaturesString = featureName.name + ', ';
+                          } else if (index == (review.features.length - 1)) {
+                            reviewFeaturesString += featureName.name;
+                          } else {
+                            reviewFeaturesString += featureName.name + ', ';
+                          }
+                        })
+                      }
                       return (
-                        <TouchableOpacity key={index} style={styles.review} onPress={() => {
-                          this.props.navigation.navigate((map ? 'MapViewProfileScreen' : 'AddViewProfileScreen'), {
-                            map: map,
-                            user: review.user,
-                          })
-                        }}>
+                        <View key={index} style={styles.review}>
                           <Image
                             style={styles.reviewImage}
                             source={{
@@ -184,7 +184,7 @@ class LocationScreen extends React.Component {
                             </View>
                             <Text>{review.review}</Text>
                           </View>
-                        </TouchableOpacity>
+                        </View>
                       );
                     })
                   }
@@ -312,3 +312,40 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(LocationScreen);
+
+// <TouchableOpacity key={index} style={styles.review} onPress={() => {
+//   this.props.navigation.navigate((map ? 'MapViewProfileScreen' : 'AddViewProfileScreen'), {
+//     map: map,
+//     user: review.user,
+//   })
+// }}>
+//   <Image
+//     style={styles.reviewImage}
+//     source={{
+//       uri:
+//         'https://i.pinimg.com/originals/e7/d4/50/e7d450d8c31ae10aa663d082fdbb3db9.png',
+//     }}
+//   />
+//   <View style={styles.reviewText}>
+//     <Text style={styles.reviewTextTitle}>{review.user.name}</Text>
+//     <View style={styles.createdAtRow}>
+//       <MaterialCommunityIcons
+//         name="clock-time-eight"
+//         color="#000000"
+//         size={12}
+//         style={styles.createdAtIcon}
+//       />
+//       <Text>{review.createdAt}</Text>
+//     </View>
+//     <View style={styles.createdAtRow}>
+//       <MaterialCommunityIcons
+//         name="tag"
+//         color="#000000"
+//         size={12}
+//         style={styles.createdAtIcon}
+//       />
+//       <Text>{reviewFeaturesString}</Text>
+//     </View>
+//     <Text>{review.review}</Text>
+//   </View>
+// </TouchableOpacity>

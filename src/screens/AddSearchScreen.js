@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, ScrollView, StyleSheet, Image, TouchableOpacity, Dimensions} from 'react-native';
+import {Text, View, ScrollView, StyleSheet, Image, Platform, TouchableOpacity, Dimensions} from 'react-native';
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import {AppStyles} from '../AppStyles';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -80,6 +80,7 @@ class AddSearchScreen extends React.Component {
                     borderRadius: 19,
                     height: 38,width: 38,
                     justifyContent: 'center',
+                    overflow: 'hidden',
                     marginBottom: 15,marginLeft: 15,marginRight: 15,marginTop: 15,
                     paddingLeft: 5,paddingTop: 5,
                   } : styles.searchSectionEmptyIcon}
@@ -171,7 +172,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     borderWidth: 5,
     borderColor: '#bcbcbc',
-    borderRadius: 70,
+    borderRadius: Platform.OS === 'ios' ? 50 : 70,
   },
   text: {
     flexDirection: 'column',

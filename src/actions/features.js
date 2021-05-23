@@ -40,6 +40,7 @@ export const startSetFeatures = () => {
               ...childSnapshot.val()
           });
         });
+        console.log('features, ', features);
         dispatch(setFeatures(features));
     });
   };

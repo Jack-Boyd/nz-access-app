@@ -140,11 +140,13 @@ class ProfileScreen extends React.Component {
 
                       </View>
                     ) : (
-                      <View style={styles.userSection}>
-                        {
-                          imagePath !== '' &&
-                          <Image source={{uri: imagePath}} style={styles.imageStyle}/>
-                        }
+                      <View style={styles.image}>
+                        <View style={styles.imageSection}>
+                          {
+                            imagePath !== '' &&
+                            <Image source={{uri: imagePath}} style={styles.imageStyle}/>
+                          }
+                        </View>
                       </View>
                     )
                   : (<View><Text>Error: No user found</Text></View>)
@@ -235,16 +237,28 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  imageSection:{
+    textAlign: 'center',
+    flex: 1,
+    alignSelf: 'center',
+    marginTop: 10,
+    paddingBottom: 10,
+    marginBottom: 10,
+  },
+  image:{
+
+    marginTop: 5,
+    marginBottom: 5,
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#bebebe',
+  },
   imageStyle: {
     alignItems: 'center',
     height: 125,
-    marginTop: 5,
-    marginLeft: 5,
-    marginBottom: 5,
-    marginRight: 6,
-    padding: 10,
     resizeMode: 'stretch',
     width: 125,
+    borderRadius: 125,
   },
   activityIndicator: {
     flex: 1,

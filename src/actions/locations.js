@@ -83,6 +83,6 @@ export const startSetLocations = () => {
           });
         });
         dispatch(setLocations(locations));
-    });
+    }).catch((error) => console.log(error));
   };
 };

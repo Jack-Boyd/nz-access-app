@@ -16,7 +16,7 @@
       <!-- You will only need to add this meta-data tag, but make sure it's a child of application -->
       <meta-data
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyBIfnp4hQ03-mF4yHIDLuurKPUE3_f73bA"/>
+        android:value="AIzaSyA4zbJBoGkeq-KNm91bKQ449XLln_bhKhg"/>
         <meta-data android:name="com.facebook.sdk.ApplicationId"
                 android:value="@string/facebook_app_id"/>
       <!-- You will also only need to add this uses-library tag -->

@@ -10,6 +10,7 @@ import {
   PermissionsAndroid,
   Dimensions,
   Image,
+  Platform,
 } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import MapView, {Marker, Callout} from 'react-native-maps';
@@ -20,7 +21,7 @@ import {AppStyles} from '../AppStyles';
 import getVisibleLocations from '../selectors/locations';
 import {setCurentLocation} from '../actions/currentLocation';
 
-const requestCameraPermission = async () => {
+const requestFineLocationPermission = async () => {
   const granted = await PermissionsAndroid.request(
     PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
     {
@@ -53,7 +54,10 @@ class MapScreen extends React.Component {
   }
 
   async componentDidMount() {
-    await requestCameraPermission();
+    if (Platform.OS === 'ios') {
+    } else {
+      await requestFineLocationPermission();
+    }
     this.setState({loading: true}, () => {
       Geolocation.getCurrentPosition((position) => {
         this.setState({
@@ -61,10 +65,10 @@ class MapScreen extends React.Component {
           loading: false,
         });
         this.props.dispatch(setCurentLocation({
-          // latitude: position.coords.latitude,
-          // longitude: position.coords.longitude,
-          latitude: -36.8687861,
-          longitude: 174.7684134,
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          //latitude: -36.8687861,
+          //longitude: 174.7684134,
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }));
@@ -167,7 +171,7 @@ class MapScreen extends React.Component {
                             style={{
                               backgroundColor: category.colour,
                               borderRadius: 17,
-                              height: 34,width: 34,
+                              height: 35,width: 35,
                               justifyContent: 'center',
                               marginTop: 5,marginLeft: 20,marginRight: 20,
                               paddingLeft: 4,paddingTop: 4,
@@ -246,6 +250,7 @@ class MapScreen extends React.Component {
                           return (
                             <Marker
                               key={pin.reference}
+                              ref={ref => {this.mark = ref;}}
                               coordinate={coordinate}
                               pinColor={'green'}
                               title={pin.name}>
@@ -256,22 +261,37 @@ class MapScreen extends React.Component {
                                   size={18}
                                   style={{
                                     backgroundColor: category.colour,
-                                    borderRadius: 13,
-                                    height: 24,
+                                    borderWidth: 1,
+                                    borderColor: "#000000",
+                                    borderRadius: 15,
+                                    height: 31,
                                     justifyContent: 'center',
-                                    paddingLeft: 3,paddingTop: 3,
-                                    width: 24,
+                                    overflow: 'hidden',
+                                    paddingLeft: 6,paddingTop: 6,
+                                    width: 31,
                                   }}
                                 />
                               </View>
-                              <Callout tooltip onPress={() => {
-                                this.props.dispatch(setCurentLocation(region));
-                                this.props.navigation.navigate('MapLocationScreen', {
-                                  locationId: pin.id,
-                                  map: true,
-                                })
-                              }}>
-                              </Callout>
+                              {
+                                Platform.OS === 'android' ? <Callout tooltip onPress={() => {
+                                  this.props.dispatch(setCurentLocation(region));
+                                  this.props.navigation.navigate('MapLocationScreen', {
+                                    locationId: pin.id,
+                                    map: true,
+                                  })
+                                }}></Callout> :
+                                <Callout style={{flex: -1, position: 'absolute', width: 160}} onPress={() => {
+                                  this.props.dispatch(setCurentLocation(region));
+                                  this.props.navigation.navigate('MapLocationScreen', {
+                                    locationId: pin.id,
+                                    map: true,
+                                  })
+                                }}>
+                                  <Text style={{fontSize: 6, fontWeight: 'bold', textAlign: 'center'}}>{pin.name}</Text>
+                                </Callout>
+                              }
+
+
                             </Marker>
                           );
                         })
@@ -339,6 +359,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 20,
     marginRight: 20,
+    overflow: 'hidden',
     paddingLeft: 4,
     paddingTop: 4,
     width: 34,
@@ -348,6 +369,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     height: 30,
     justifyContent: 'center',
+    overflow: 'hidden',
+
     paddingLeft: 5,
     paddingTop: 5,
     width: 30,
@@ -373,10 +396,11 @@ const styles = StyleSheet.create({
   },
   filterButton: {
     backgroundColor: AppStyles.color.main,
-    borderRadius: 18,
+    borderRadius: Platform.OS === 'ios' ? 15 : 18,
     height: 30,
     marginRight: 10,
     marginTop: 10,
+    overflow: 'hidden',
     paddingLeft: 4,
     paddingTop: 4,
     position: 'absolute',
@@ -386,11 +410,12 @@ const styles = StyleSheet.create({
   },
   goToButton: {
     backgroundColor: AppStyles.color.main,
-    borderRadius: 18,
+    borderRadius: Platform.OS === 'ios' ? 15 : 18,
     height: 30,
     marginRight: 10,
     marginTop: 60,
     marginBottom: 55,
+    overflow: 'hidden',
     paddingLeft: 4,
     paddingTop: 4,
     position: 'absolute',
@@ -410,7 +435,16 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
     width: 25,
   },
-
+  pinBackground: {
+    alignSelf: 'center',
+    flexDirection: 'row',
+    backgroundColor: 'white',
+  },
+  pin:{
+    fontSize: 5,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
 });
 
 const mapStateToProps = (state) => ({
