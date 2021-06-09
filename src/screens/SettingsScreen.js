@@ -3,6 +3,7 @@ import {Text, View, StyleSheet, Dimensions, Linking, TextInput, Button, Platform
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {connect} from 'react-redux';
 import {AppStyles} from '../AppStyles';
+import IOSStatusBar from './IOSStatusBar';
 
 class SettingsScreen extends React.Component {
   constructor(props){
@@ -11,6 +12,7 @@ class SettingsScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        {Platform.OS === 'ios' && <IOSStatusBar/>}
         <TouchableOpacity style={styles.profileRow} onPress={() => {
           this.props.navigation.navigate('SettingsAboutScreen')
         }}>

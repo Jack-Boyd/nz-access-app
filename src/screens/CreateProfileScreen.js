@@ -1,8 +1,9 @@
 import React from 'react';
-import {Text, View, StyleSheet, ScrollView, Dimensions, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, ScrollView, Dimensions, TouchableOpacity, Platform} from 'react-native';
 import {AppStyles} from '../AppStyles';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {connect} from 'react-redux';
+import IOSStatusBar from './IOSStatusBar';
 
 class CreateProfileScreen extends React.Component {
   constructor(props){
@@ -11,6 +12,7 @@ class CreateProfileScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        {Platform.OS === 'ios' && <IOSStatusBar/>}
         <TouchableOpacity style={styles.profileRow} onPress={() => {
           this.props.navigation.navigate('LoginScreen')
         }}>

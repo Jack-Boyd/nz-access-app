@@ -13,6 +13,7 @@ import {
 import {startSetUser} from '../actions/user';
 import {AppStyles} from '../AppStyles';
 import loginFirebaseWithFacebook from '../selectors/facebook';
+import IOSStatusBar from './IOSStatusBar';
 
 class LoginScreen extends React.Component {
   constructor(props){
@@ -150,6 +151,7 @@ class LoginScreen extends React.Component {
     const {general, email, password,} = this.state.errors;
     return (
       <View style={styles.container}>
+        {Platform.OS === 'ios' && <IOSStatusBar/>}
         <ScrollView style={styles.scrollView}>
           <View style={styles.screen}>
             <View style={styles.form}>

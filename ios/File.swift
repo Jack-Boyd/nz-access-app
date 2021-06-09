@@ -1,8 +1,8 @@
 //
 //  File.swift
-//  WheelEasy
+//  wheeleasy
 //
-//  Created by Admin on 11/04/21.
+//  Created by Jack Boyd on 6/06/21.
 //
 
 import Foundation

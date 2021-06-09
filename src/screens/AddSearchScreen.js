@@ -4,6 +4,7 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import {AppStyles} from '../AppStyles';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {connect} from 'react-redux';
+import IOSStatusBar from './IOSStatusBar';
 
 class AddSearchScreen extends React.Component {
   constructor(props){
@@ -29,6 +30,7 @@ class AddSearchScreen extends React.Component {
     const subHeadingTextLimit = 42;
     return (
       <View style={styles.container}>
+        {Platform.OS === 'ios' && <IOSStatusBar/>}
         <GooglePlacesAutocomplete
           placeholder='Search for place'
           minLength={4}

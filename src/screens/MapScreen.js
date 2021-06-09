@@ -20,6 +20,7 @@ import {connect} from 'react-redux';
 import {AppStyles} from '../AppStyles';
 import getVisibleLocations from '../selectors/locations';
 import {setCurentLocation} from '../actions/currentLocation';
+import IOSStatusBar from './IOSStatusBar';
 
 const requestFineLocationPermission = async () => {
   const granted = await PermissionsAndroid.request(
@@ -118,6 +119,7 @@ class MapScreen extends React.Component {
 
     return (
       <View style={styles.container}>
+        {Platform.OS === 'ios' && <IOSStatusBar/>}
         {
           loading && (
             <ActivityIndicator
