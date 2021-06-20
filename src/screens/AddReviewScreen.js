@@ -8,6 +8,7 @@ import moment from 'moment';
 
 import {AppStyles} from '../AppStyles';
 import {startAddLocation, startAddFeatures, startAddReview} from '../actions/locations';
+import IOSStatusBar from './IOSStatusBar';
 
 const AnimatedIcon = Animated.createAnimatedComponent(MaterialCommunityIcons);
 
@@ -215,13 +216,13 @@ class AddReviewScreen extends React.Component {
         iconRows.push(row);
       }
     }
-    console.log('huh?', this.state)
 
     return (
       // <KeyboardAvoidingView
       //   behaviour={Platform.OS === 'ios' ? "padding" : "height"}
       //   style={Platform.OS === 'ios' && {flex: 1}}>
         <View style={styles.container}>
+          {Platform.OS === 'ios' && <IOSStatusBar/>}
         <ScrollView style={styles.scrollView}>
           <View style={styles.screen}>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -370,7 +371,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     overflow: 'hidden',
-
+    height: 50,
     marginBottom: 15,
   },
   submitButton: {

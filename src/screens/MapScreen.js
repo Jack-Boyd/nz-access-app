@@ -142,7 +142,7 @@ class MapScreen extends React.Component {
                   style={styles.imageStyle}
                 />
                 <TextInput
-                  style={{flex: 1}}
+                  style={{flex: 1, height: 45}}
                   onChangeText={(e) => {
                     this.onSearchChange(e, region)
                   }}

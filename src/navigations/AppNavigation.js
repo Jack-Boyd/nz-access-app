@@ -74,6 +74,7 @@ const MapStack = ({dispatch}) => {
       <Stack.Screen name="MapFilterScreen" component={MapFilterScreen} options={
         {
           title: 'Filter',
+          headerBackTitleVisible: false,
           headerTitleStyle: {
             fontSize: 16,
           },
@@ -85,6 +86,7 @@ const MapStack = ({dispatch}) => {
       <Stack.Screen name="MapLocationScreen" component={LocationScreen} options={({ route }) =>
         ({
           title: 'Details',
+          headerBackTitleVisible: false,
           headerTitleStyle: {
             fontSize: 16,
           },
@@ -101,11 +103,12 @@ const MapStack = ({dispatch}) => {
       }></Stack.Screen>
       <Stack.Screen name="MapAddReviewScreen" component={AddReviewScreen} options={{
         title: 'Rate this place',
+        headerBackTitleVisible: false,
         headerTitleStyle: {
           fontSize: 16,
         },
       }}></Stack.Screen>
-      <Stack.Screen name="MapViewProfileScreen" component={ViewProfileScreen} options={{ headerShown: false }}></Stack.Screen>
+      <Stack.Screen name="MapViewProfileScreen" component={ViewProfileScreen} options={{ headerShown: false, }}></Stack.Screen>
     </Stack.Navigator>
   );
 }
@@ -157,6 +160,7 @@ const AddScreensStack = () => {
       <Stack.Screen name="AddSearchScreen" component={AddSearchScreen} options={{ headerShown: false }}></Stack.Screen>
       <Stack.Screen name="AddLocationScreen" component={LocationScreen} options={{
         title: 'Details',
+        headerBackTitleVisible: false,
         headerTitleStyle: {
           fontSize: 16,
         },
@@ -172,6 +176,7 @@ const AddScreensStack = () => {
       }}></Stack.Screen>
       <Stack.Screen name="AddReviewScreen" component={AddReviewScreen} options={{
         title: 'Rate this place',
+        headerBackTitleVisible: false,
         headerTitleStyle: {
           fontSize: 16,
         },
@@ -204,12 +209,14 @@ const ProfileStack = () => {
       <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{ headerShown: false }}></Stack.Screen>
       <Stack.Screen name="ProfileSettingsScreen" component={ProfileSettingsScreen} options={{
         title: 'Settings',
+        headerBackTitleVisible: false,
         headerTitleStyle: {
           fontSize: 16,
         },
        }}></Stack.Screen>
        <Stack.Screen name="ProfileEditScreen" component={ProfileEditScreen} options={{
         title: 'Edit Profile',
+        headerBackTitleVisible: false,
         headerTitleStyle: {
           fontSize: 16,
         },
@@ -232,18 +239,21 @@ const CreateProfileStack = () => {
       <Stack.Screen name="CreateProfileScreen" component={CreateProfileScreen} options={{ headerShown: false }}></Stack.Screen>
       <Stack.Screen name="LoginScreen" component={LoginScreen} options={{
         title: 'Login',
+        headerBackTitleVisible: false,
         headerTitleStyle: {
           fontSize: 16,
         },
       }}></Stack.Screen>
       <Stack.Screen name="RegisterScreen" component={RegisterScreen}  options={{
         title: 'Create Account',
+        headerBackTitleVisible: false,
         headerTitleStyle: {
           fontSize: 16,
         },
       }}></Stack.Screen>
       <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} options={{
         title: 'Forgot Password',
+        headerBackTitleVisible: false,
         headerTitleStyle: {
           fontSize: 16,
         },

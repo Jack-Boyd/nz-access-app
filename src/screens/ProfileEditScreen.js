@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     borderColor: '#999',
     borderWidth: 1,
     borderRadius: 5,
-    height: 40,
+    height: 50,
     marginBottom: 5,
   },
   multiLineInput: {
@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
     borderColor: '#999',
     borderWidth: 1,
     borderRadius: 5,
+    height: 50,
     marginBottom: 5,
   },
   characterCount: {

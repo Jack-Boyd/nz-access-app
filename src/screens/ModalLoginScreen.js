@@ -341,6 +341,7 @@ const styles = StyleSheet.create({
     borderColor: '#999',
     borderWidth: 1,
     borderRadius: 5,
+    height: 50,
   },
   error: {
     color: 'red',

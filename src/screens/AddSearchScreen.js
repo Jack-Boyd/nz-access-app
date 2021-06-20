@@ -139,6 +139,7 @@ const searchStyles = StyleSheet.create({
     position: 'absolute',
     zIndex: 100,
     width: '100%',
+    marginTop: (Platform.OS === 'ios') ? 35 : 0,
     backgroundColor: '#fff',
   },
   textInputContainer: {
