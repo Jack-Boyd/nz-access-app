@@ -14,17 +14,6 @@ class SettingsScreen extends React.Component {
       <View style={styles.container}>
         {Platform.OS === 'ios' && <IOSStatusBar/>}
         <TouchableOpacity style={styles.profileRow} onPress={() => {
-          this.props.navigation.navigate('SettingsAboutScreen')
-        }}>
-          <Text style={styles.profileText}>About Us</Text>
-          <MaterialCommunityIcons
-            name="chevron-right"
-            color={AppStyles.color.main}
-            size={14}
-            style={styles.profileIcon}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.profileRow} onPress={() => {
           this.props.navigation.navigate('SettingsContactScreen')
         }}>
           <Text style={styles.profileText}>Contact Us</Text>

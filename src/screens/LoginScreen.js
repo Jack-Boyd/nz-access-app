@@ -137,11 +137,11 @@ class LoginScreen extends React.Component {
           this.props.navigation.navigate("Map");
         }
         else {
-          ctx.setState({errors: {general: 'Invalid email and/or password. Please try again or select forgot your password.',}});
+          ctx.setState({errors: {general: 'User not found. Please make sure you have registered, and that your password is correct.',}});
           return;
         }
       }).catch((error) => {
-        ctx.setState({errors: {general: 'Invalid email and/or password. Please try again or select forgot your password.',}});
+        ctx.setState({errors: {general: 'User not found. Please make sure you have registered, and that your password is correct.',}});
       });
 
     }

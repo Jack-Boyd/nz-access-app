@@ -4,17 +4,16 @@ make photos part of review for both new and existing locations
 make select avatar functionality
 
 create/style logged in change password page
-Create entire 'More' section (About us, Contact us, Access from home (?), Ts&Cs, Privacy Policy, Version number + buildnumber)
+contact page
 
-load onto phone and test current location
-port over to ios
+Load rest of content from access now
+ios	 	Text box covered by keyboard
+ios 	Splash screen
+ios 	App Icon
 
-? [near me section]
-? accessnow name
-? accessnow colour
-? accessnow nz domain
-? accessnow email
-? terms, privacy policy, settings page content
+? terms, privacy policy
+? social media (Not my area can't really help)
+? confirm logo i made
 
 Auth Paths
 
@@ -22,6 +21,8 @@ Auth Paths
 //Go to profile tab and login with facebook
 //Go to profile tab and register
 //Go to profile tab and register with facebook
+//Add location while logged in
+//Add review to existing location while logged in
 //Attempt to add location without auth and login
 //Attempt to add location without auth and login with facebook
 //Attempt to add location without auth and register

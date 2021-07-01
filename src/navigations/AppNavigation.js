@@ -267,7 +267,6 @@ const CreateProfileStack = () => {
 const MoreStack = () => {
   return (
     <Stack.Navigator
-      headerMode="none"
       screenOptions={{
         gestureEnabled: true,
         gestureDirection: 'horizontal',
@@ -275,9 +274,14 @@ const MoreStack = () => {
       }}
       animation="fade"
     >
-      <Stack.Screen name="SettingsScreen" component={SettingsScreen}></Stack.Screen>
-      <Stack.Screen name="SettingsAboutScreen" component={AboutScreen}></Stack.Screen>
-      <Stack.Screen name="SettingsContactScreen" component={ContactScreen}></Stack.Screen>
+      <Stack.Screen name="SettingsScreen" component={SettingsScreen} options={{headerShown: false}}></Stack.Screen>
+      <Stack.Screen name="SettingsContactScreen" component={ContactScreen} options={{
+        title: 'Contact Us',
+        headerBackTitleVisible: false,
+        headerTitleStyle: {
+          fontSize: 16,
+        },
+      }}></Stack.Screen>
     </Stack.Navigator>
   );
 }

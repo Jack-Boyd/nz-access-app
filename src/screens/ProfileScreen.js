@@ -12,6 +12,7 @@ import {connect} from 'react-redux';
 
 import {startAddUserPhoto, startSetUser} from '../actions/user';
 import {AppStyles} from '../AppStyles';
+import _ from 'lodash';
 
 class ProfileScreen extends React.Component {
   constructor(props){
@@ -24,8 +25,10 @@ class ProfileScreen extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.user.photo){
-      let imageRef = storage().ref(this.props.user.photo);
+    const {user} = this.props;
+    const photo = _.get(user, 'photo');
+    if (photo){
+      let imageRef = storage().ref(photo);
       imageRef.getDownloadURL().then((url) => {
         this.setState({imagePath: url});
       })
@@ -86,6 +89,8 @@ class ProfileScreen extends React.Component {
 
   render() {
     const {uploading, imagePath} = this.state;
+    const {user} = this.props;
+    const userPhoto = _.get(user, 'photo');
     return (
 
       <View style={styles.container}>
@@ -114,8 +119,8 @@ class ProfileScreen extends React.Component {
                   </View>
                 </TouchableOpacity>
                 {
-                  this.props.user ?
-                    this.props.user.photo == null ? (
+                  user ?
+                    userPhoto == null ? (
                       <View style={styles.userSection}>
                         <View style={styles.noPhoto}>
                           <MaterialCommunityIcons
